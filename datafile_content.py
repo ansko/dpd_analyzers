@@ -1,6 +1,7 @@
+# Originates from:
 # https://github.com/ansko/md_work
 # /commit/910b5485e1d052c03ab51c4d3756881bb315493a
-# structural_tools/datafile_content.py
+# /structural_tools/datafile_content.py
 
 
 class DatafileContent:

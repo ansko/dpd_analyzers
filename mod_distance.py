@@ -1,3 +1,9 @@
+# Originates from:
+# https://github.com/ansko/dpd_analyzers
+# /commit/de492c7789873720169df59a1bb4f4f717fae52f
+# /mod_distance.py
+
+
 from datafile_content import DatafileContent
 
 
@@ -35,14 +41,12 @@ def modifier_distance(dfc, mmt_atom_type, modifier_head_atom_type):
 
 
 if __name__ == '__main__':
-    #fnames = ['dfs/clay_r10_n2_int_5_mod_tail2_n50_poly_p10_n15009.data']
-    #fnames = ['dfs/dpd_d.0.data', 'dfs/dpd_d.10000.data']
-    fnames = ['dfs/dpd_d.{0}.data'.format(idx*1000) for idx in range(4)]
     mmt_atom_type = 1
     modifier_head_atom_type = 2
 
-    #for idx in range(3):
-    #    fname = 'dfs/dpd_d.{0}.data'.format((idx + 1)*10000)
+    import os
+    fnames = ['dfs/{0}'.format(fname) for fname in sorted(os.listdir('dfs'))]
+
     for idx, fname in enumerate(fnames):
         dfc = DatafileContent(fname)
         data = modifier_distance(dfc, mmt_atom_type, modifier_head_atom_type)

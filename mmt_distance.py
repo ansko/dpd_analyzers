@@ -1,3 +1,9 @@
+# Originates from:
+# https://github.com/ansko/dpd_analyzers
+# /commit/de492c7789873720169df59a1bb4f4f717fae52f
+# /mmt_distance.py
+
+
 from datafile_content import DatafileContent
 
 
@@ -36,14 +42,13 @@ def platelets_distance(dfc, mmt_atom_type, platelets_count):
 
 
 if __name__ == '__main__':
-    fnames = ['clay_r10_n2_mod_tail2_poly_p10_n14078.data']
-    fnames = ['dfs/dpd_d.{0}.data'.format(idx*1000) for idx in range(4)]
     mmt_atom_type = 1
     platelets_count = 2
 
+    import os
+    fnames = ['dfs/{0}'.format(fname) for fname in sorted(os.listdir('dfs'))]
+
     for idx, fname in enumerate(fnames):
-#    for idx in range(21):
-#        fname = 'dfs/dpd.{0}.data'.format((idx + 1)*5000)
         dfc = DatafileContent(fname)
         data = platelets_distance(dfc, mmt_atom_type, platelets_count)
         print(idx, data[0][1])
