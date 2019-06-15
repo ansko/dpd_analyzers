@@ -29,12 +29,15 @@ if __name__ == '__main__':
         fnames = [
             'outputs/mmt_distance_tail5_n360',
             'outputs/mmt_distance_tail5_n240',
-            'outputs/mmt_distance_tail5_n160'
+            'outputs/mmt_distance_tail5_n160',
+            'outputs/mmt_distance_tail5_n100'
         ]
         legends = [
-            'N = 360, CEC = {0}'.format(cec(r=15, modifiers=360)),
-            'N = 240, CEC = {0}'.format(cec(r=15, modifiers=240)),
-            'N = 160, CEC = {0}'.format(cec(r=15, modifiers=160))
+            'N = 360 (26->31->51), CEC = {0}'.format(cec(r=15, modifiers=360)),
+            'N = 240 (16->21->25), CEC = {0}'.format(cec(r=15, modifiers=240)),
+            'N = 160 (10->15->17), CEC = {0}'.format(cec(r=15, modifiers=160)),
+            'N = 100 (3->13->15), CEC = {0}'.format(cec(r=15, modifiers=100))
+
         ]
         ylims = [0, 25]
     elif int(sys.argv[1]) == 2:
@@ -47,14 +50,14 @@ if __name__ == '__main__':
             'outputs/mmt_distance_tail2_n4'
         ]
         legends = [
-            'N = 150, CEC = {0}'.format(cec(r=10, modifiers=150)),
-            'N = 100, CEC = {0}'.format(cec(r=10, modifiers=100)),
-            'N = 50, CEC = {0}'.format(cec(r=10, modifiers=50)),
-            'N = 20, CEC = {0}'.format(cec(r=10, modifiers=20)),
-            'N = 10, CEC = {0}'.format(cec(r=10, modifiers=10)),
-            'N = 4, CEC = {0}'.format(cec(r=10, modifiers=4))
+            'N = 150 (32->75->46), CEC = {0}'.format(cec(r=10, modifiers=150)),
+            'N = 100 (19->48->41), CEC = {0}'.format(cec(r=10, modifiers=100)),
+            'N = 50 (12->?->25), CEC = {0}'.format(cec(r=10, modifiers=50)),
+            'N = 20 (2->?->5), CEC = {0}'.format(cec(r=10, modifiers=20)),
+            'N = 10 (3-?->2), CEC = {0}'.format(cec(r=10, modifiers=10)),
+            'N = 4 (0-?->2), CEC = {0}'.format(cec(r=10, modifiers=4))
         ]
-        ylims = [0, 15]
+        ylims = [0, 25]
     elif int(sys.argv[1]) == 5:
         fnames = [
             'outputs/mmt_distance_tail5_n80',
@@ -66,14 +69,14 @@ if __name__ == '__main__':
             'outputs/mmt_distance_tail5_n10',
             'outputs/mmt_distance_tail5_n4']
         legends = [
-            'N = 80, CEC = {0}'.format(cec(r=10, modifiers=80)),
-            'N = 70, CEC = {0}'.format(cec(r=10, modifiers=70)),
-            'N = 60, CEC = {0}'.format(cec(r=10, modifiers=60)),
-            'N = 50, CEC = {0}'.format(cec(r=10, modifiers=50)),
-            'N = 40, CEC = {0}'.format(cec(r=10, modifiers=40)),
-            'N = 20, CEC = {0}'.format(cec(r=10, modifiers=20)),
-            'N = 10, CEC = {0}'.format(cec(r=10, modifiers=10)),
-            'N = 4, CEC = {0}'.format(cec(r=10, modifiers=4))
+            'N = 80 (16->39->39), CEC = {0}'.format(cec(r=10, modifiers=80)),
+            'N = 70 (7->23->31), CEC = {0}'.format(cec(r=10, modifiers=70)),
+            'N = 60 (8->25->30), CEC = {0}'.format(cec(r=10, modifiers=60)),
+            'N = 50 (11->26->27), CEC = {0}'.format(cec(r=10, modifiers=50)),
+            'N = 40 (6->13->16), CEC = {0}'.format(cec(r=10, modifiers=40)),
+            'N = 20 (3->5->8), CEC = {0}'.format(cec(r=10, modifiers=20)),
+            'N = 10 (1->2->5), CEC = {0}'.format(cec(r=10, modifiers=10)),
+            'N = 4 (1->1->1), CEC = {0}'.format(cec(r=10, modifiers=4))
         ]
         ylims = [0, 35]
     else:
@@ -100,7 +103,7 @@ if __name__ == '__main__':
     plt.xlabel('Steps')
     plt.ylabel(r'Distance in $r_c$ ($r_c$ = 1.35$\AA$)')
 
-    plt.legend(plotted_lines, legends)
+    plt.legend(plotted_lines, legends, fontsize=8)
 
     if len(sys.argv) == 3:
         plt.savefig('figures/mmt_distances_tail{0}_r{1}.eps'.format(

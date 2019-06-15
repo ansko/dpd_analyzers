@@ -31,23 +31,32 @@ if __name__ == '__main__':
               'q_10/coul_cut_25/')
 
     if len(sys.argv) < 2:
-        print('usage: ./{0} [tail_length] count'.format(__file__))
+        print('usage: ./{0} [platelet_radius] [tail_length] count'.format(
+            __file__))
         sys.exit()
-    elif len(sys.argv) > 2:
+    elif len(sys.argv) == 4:
+        r = int(sys.argv[1])
+        tail = int(sys.argv[2])
+        count = int(sys.argv[3])
+    elif len(sys.argv) == 3:
+        r = 10
         tail = int(sys.argv[1])
         count = int(sys.argv[2])
     else:
+        r = 10
         tail = 5
         count = int(sys.argv[1])
 
     if tail == 2:
         hd_dir += {
-            4:  'clay_r10_n2_int_5_mod_tail2_n4_poly_p10_n15043',
-            10: 'clay_r10_n2_int_5_mod_tail2_n10_poly_p10_n15039',
-            20: 'clay_r10_n2_int_5_mod_tail2_n20_poly_p10_n15031',
-            50: 'clay_r10_n2_int_5_mod_tail2_n50_poly_p10_n15009'
+            4:   'clay_r10_n2_int_5_mod_tail2_n4_poly_p10_n15043',
+            10:  'clay_r10_n2_int_5_mod_tail2_n10_poly_p10_n15039',
+            20:  'clay_r10_n2_int_5_mod_tail2_n20_poly_p10_n15031',
+            50:  'clay_r10_n2_int_5_mod_tail2_n50_poly_p10_n15009',
+            100: 'isolated_mmt_r10_n2_mod_n100_tail2_poly_p10_n14973',
+            150: 'isolated_mmt_r10_n2_mod_n150_tail2_poly_p10_n14936'
         }[count]
-    elif tail == 5:
+    elif tail == 5 and r == 10:
         hd_dir += {
             4:  'isolated_mmt_r10_n2_mod_n4_tail5_poly_p10_n15040',
             10: 'isolated_mmt_r10_n2_mod_n10_tail5_poly_p10_n15031',
@@ -57,11 +66,21 @@ if __name__ == '__main__':
             60: 'isolated_mmt_r10_n2_mod_n60_tail5_poly_p10_n14958',
             70: 'isolated_mmt_r10_n2_mod_n70_tail5_poly_p10_n14944',
             80: 'isolated_mmt_r10_n2_mod_n80_tail5_poly_p10_n14900'
-       }[count]
+        }[count]
+    elif tail == 5 and r == 15:
+        hd_dir += {
+            100: 'isolated_mmt_r15_n2_mod_n100_tail5_poly_p10_n50855',
+            160: 'isolated_mmt_r15_n2_mod_n160_tail5_poly_p10_n50767',
+            240: 'isolated_mmt_r15_n2_mod_n240_tail5_poly_p10_n50650',
+            360: 'isolated_mmt_r15_n2_mod_n360_tail5_poly_p10_n50474'
+        }[count]
     hd_dir += '/datafiles'
     print('Tail = {0};  Count = {1}'.format(tail, count))
 
-    fname = '{0}/dpd_d.0.data'.format(hd_dir)
+    #fname = '{0}/dpd_d.0.data'.format(hd_dir)
+    #fname = '{0}/dpd_d.1000.data'.format(hd_dir)
+    fname = '{0}/dpd_d.5000.data'.format(hd_dir)
+    #fname = '{0}/dpd_d.10000.data'.format(hd_dir)
 
     dfc = DatafileContent(fname)
 
